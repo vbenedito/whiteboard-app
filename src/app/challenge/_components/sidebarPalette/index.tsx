@@ -1,5 +1,7 @@
 "use client";
 
+import DraggableCard from "../draggable-card";
+
 const elements = [
   { label: "Database", type: "DB" },
   { label: "Load Balancer", type: "LB" },
@@ -17,14 +19,12 @@ export default function SidebarPalette() {
     <div className="w-60 bg-gray-900 text-white p-4 space-y-4">
       <h2 className="font-bold text-lg mb-4">Componentes</h2>
       {elements.map((el) => (
-        <div
+        <DraggableCard
           key={el.type}
-          draggable
-          onDragStart={(e) => onDragStart(e, el.label)}
-          className="p-2 bg-gray-700 rounded hover:bg-gray-600 cursor-grab"
-        >
-          {el.label}
-        </div>
+          label={el.label}
+          type={el.type}
+          onDragStart={onDragStart}
+        />
       ))}
     </div>
   );
