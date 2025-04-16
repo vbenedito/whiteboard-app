@@ -1,12 +1,14 @@
 "use client";
 
 import DraggableCard from "../draggable-card";
+import InputCard from "../inputCard";
 
 const elements = [
+  { label: "User", type: "USER" },
   { label: "Database", type: "DB" },
   { label: "Load Balancer", type: "LB" },
-  { label: "Cache", type: "Cache" },
-  { label: "API Server", type: "API" },
+  { label: "Cache", type: "CH" },
+  { label: "API Server", type: "AS" },
 ];
 
 export default function SidebarPalette() {
@@ -22,10 +24,11 @@ export default function SidebarPalette() {
         <DraggableCard
           key={el.type}
           label={el.label}
-          type={el.type}
-          onDragStart={onDragStart}
+          onDragStart={(event) => onDragStart(event, el.label)}
         />
       ))}
+
+      <InputCard onDragStart={onDragStart} />
     </div>
   );
 }
