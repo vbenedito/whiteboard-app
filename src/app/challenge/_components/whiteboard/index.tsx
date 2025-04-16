@@ -1,10 +1,11 @@
 "use client";
 import "reactflow/dist/style.css";
 
-import ReactFlow, { Background, Controls, ReactFlowProvider } from "reactflow";
+import ReactFlow, { Background, Controls } from "reactflow";
 import SidebarPalette from "../sidebarPalette";
 import { useWhiteboardState } from "@/app/hooks/whiteboard/useWhiteboardState";
 import { useWhiteboardHandlers } from "@/app/hooks/whiteboard/useWhiteboardHandlers";
+import { ReactFlowProvider } from "@xyflow/react";
 
 export default function Whiteboard() {
   const { nodes, setNodes, onNodesChange, edges, setEdges, onEdgesChange } =
