@@ -25,7 +25,7 @@ export default function ChallengePage() {
           </p>
         </div>
 
-        <AIChatButton challengeId={challengeId?.toString() || ""} />
+        <AIChatButton />
       </aside>
     </div>
   );
