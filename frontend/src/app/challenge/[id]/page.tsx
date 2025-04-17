@@ -2,10 +2,12 @@
 
 import { useParams } from "next/navigation";
 import Whiteboard from "../_components/whiteboard";
-import AIChatButton from "../_components/ia-chat";
+import ChatPanel from "../_components/ia-chat";
+import useAIChat from "@/app/hooks/aiChat/useAIChat";
 
 export default function ChallengePage() {
   const params = useParams();
+  const { messages, handleSend, input, setInput } = useAIChat();
   const challengeId = params?.id;
 
   return (
@@ -25,7 +27,12 @@ export default function ChallengePage() {
           </p>
         </div>
 
-        <AIChatButton />
+        <ChatPanel
+          messages={messages}
+          handleSend={handleSend}
+          input={input}
+          setInput={setInput}
+        />
       </aside>
     </div>
   );

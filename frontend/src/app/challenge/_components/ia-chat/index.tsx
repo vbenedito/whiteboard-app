@@ -1,47 +1,31 @@
 "use client";
 
-import { useState } from "react";
 import { Paperclip, Send } from "lucide-react";
+import { ChatPanelProps } from "./types";
 
-type Message = {
-  id: string;
-  text: string;
-  type: "user" | "interviewer";
-};
-
-export default function ChatPanel() {
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [input, setInput] = useState("");
-
-  const handleSend = () => {
-    if (!input.trim()) return;
-
-    const newMessage: Message = {
-      id: crypto.randomUUID(),
-      text: input,
-      type: "user",
-    };
-
-    setMessages((prev) => [...prev, newMessage]);
-    setInput("");
-  };
-
+export default function ChatPanel({
+  messages,
+  handleSend,
+  input,
+  setInput,
+}: ChatPanelProps) {
   return (
-    <div className="flex flex-col h-full text-white">
-      <div className="flex-1 p-4 space-y-3 overflow-y-auto">
-        {messages.map((msg) => (
-          <div
-            key={msg.id}
-            className={`max-w-xs px-4 py-2 rounded-xl ${
-              msg.type === "user" ? "ml-auto bg-blue-600" : "bg-gray-700"
-            }`}
-          >
-            {msg.text}
-          </div>
-        ))}
+    <>
+      <div className="flex flex-col h-screen overflow-y-auto text-white">
+        <div className="flex-1 p-4 space-y-2">
+          {messages.map((msg) => (
+            <div
+              key={msg.id}
+              className={` px-4 py-2 rounded-xl w-fit max-w-[80%] break-words ${
+                msg.type === "user" ? "ml-auto bg-blue-600" : "bg-gray-700"
+              }`}
+            >
+              {msg.text}
+            </div>
+          ))}
+        </div>
       </div>
-
-      <div className="p-4 border-t flex gap-2 items-center">
+      <div className="border-t border-gray-700 p-2 flex items-center gap-2 bg-gray-900">
         <button
           type="button"
           className="p-2 rounded-full bg-gray-700 hover:bg-gray-600 transition-colors duration-200"
@@ -57,6 +41,7 @@ export default function ChatPanel() {
         />
 
         <button
+          data-testid="send-button"
           type="button"
           onClick={handleSend}
           className="p-2 rounded-full bg-gray-700 hover:bg-gray-600 transition-colors duration-200"
@@ -64,6 +49,6 @@ export default function ChatPanel() {
           <Send size={20} />
         </button>
       </div>
-    </div>
+    </>
   );
 }
