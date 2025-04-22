@@ -15,7 +15,7 @@ export async function askAI(req: Request, res: Response): Promise<void> {
       challengeName,
       imageBuffer,
     });
-    res.json({ response: result });
+    res.json({ data: result });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Erro ao processar a pergunta' });
