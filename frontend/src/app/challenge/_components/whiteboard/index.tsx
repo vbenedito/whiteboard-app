@@ -23,6 +23,7 @@ export default function Whiteboard() {
 
         <div
           className="flex-1 h-screen"
+          id="challenge-page"
           onDrop={onDrop}
           onDragOver={onDragOver}
         >

@@ -1,4 +1,5 @@
 export type Message = {
+  challengeName?: string;
   id: string;
   text: string;
   type: "user" | "interviewer";
