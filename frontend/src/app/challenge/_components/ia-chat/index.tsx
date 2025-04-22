@@ -1,6 +1,6 @@
 "use client";
 
-import { Paperclip, Send } from "lucide-react";
+import { CameraIcon, Send } from "lucide-react";
 import { ChatPanelProps } from "./types";
 
 export default function ChatPanel({
@@ -30,7 +30,7 @@ export default function ChatPanel({
           type="button"
           className="p-2 rounded-full bg-gray-700 hover:bg-gray-600 transition-colors duration-200"
         >
-          <Paperclip size={20} />
+          <CameraIcon size={20} />
         </button>
 
         <textarea
